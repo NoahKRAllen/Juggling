@@ -31,6 +31,15 @@
 # Jetbrains Rider personal-layer settings
 *.DotSettings.user
 
+# JetBrains Rider/IntelliJ IDE
+.idea/workspace.xml
+.idea/libraries/
+.idea/vcs.xml # Keep this if you want to share VCS settings
+.idea/indexLayout.xml # Keep this to share information about attached folders
+.idea/runConfigurations # Keep this to share run configurations
+.idea/*.iml # Exclude module files
+.idea/httpRequests
+.idea
 # Visual Studio cache directory
 .vs/
 
@@ -59,6 +68,7 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
