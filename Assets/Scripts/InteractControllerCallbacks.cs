@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class InteractControllerCallbacks : MonoBehaviour
 {
-    [SerializeField] List<GameObject> targetBalls; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,7 +28,7 @@ public class InteractControllerCallbacks : MonoBehaviour
         
 
         //Test hit exists, otherwise you get an error.
-        if (!hit || !targetBalls.Contains(hit.collider.gameObject)) return;
+        if (!hit || !Variables.Instance.targets.Contains(hit.collider.gameObject)) return;
         hit.collider.gameObject.GetComponent<BallReaction>().Clicked();
         Debug.Log($"Hit {hit.collider.gameObject.name} with click at {Mouse.current.position.ReadValue()}");
     }

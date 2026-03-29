@@ -21,18 +21,12 @@ public class Variables : MonoBehaviour
     }
     
     
-    //Ball Variables
-    public List<BallReaction> targets;
-    public float ballRadius;
-    public float ballSpeed;
+    //Target List
+     public List<GameObject> targets;
 
     //Bar Variables
-    public GameObject targetBar;
-    public float targetBarPosition;
-    public float targetBarSize;
-    //Player Variables
-
-
+    
+    //Testing Variables
     public bool testing;
     public bool testingFails;
     public bool testingPasses;
