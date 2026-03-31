@@ -7,7 +7,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int score;
     [SerializeField] private int time;
     [SerializeField] private Variables variables;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    //Used for randomized placement of balls before dropping them
+    [SerializeField] private float maxSpawnX;
+    [SerializeField] private float minSpawnX;
+    [SerializeField] private float spawnY;
+    [SerializeField] private float ballSpawnDelay;
     void Start()
     {
         score = 0;
