@@ -1,33 +1,31 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Variables : MonoBehaviour
-{
-    public static Variables Instance{get; private set;}
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-    
-    
+{   
     //Target List
-     public List<GameObject> targets;
-
+    [Header("Ball Variables")]
+    public List<GameObject> targetPool;
+    public int ballScore;
+    public float ballGravityScaler;
+    public float ballScaler;
+    public float ballJumpHeight;
+    
+    
     //Bar Variables
+    [Header("Bar Variables")]
+    public Transform barPosition;
+    public Transform barScale;
+    
+    //UI Variables
+    [Header("UI Variables")]
+    public Text scoreText;
+    public Text timeText;
     
     //Testing Variables
-    public bool testing;
-    public bool testingFails;
-    public bool testingPasses;
+    [Header("Testing Toggles")]
+    [Tooltip("Toggle automated testing functions")] public bool testing;
+    [Tooltip("Used with Testing toggle to test fails.")] public bool testingFails;
+    [Tooltip("Used with Testing toggle to test passes.")] public bool testingPasses;
 }

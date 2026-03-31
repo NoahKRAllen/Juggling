@@ -1048,9 +1048,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Variables
   targets:
   - {fileID: 298179489}
-  testing: 1
-  testingFails: 1
-  testingPasses: 1
+  testing: 0
+  testingFails: 0
+  testingPasses: 0
 --- !u!4 &2008970214
 Transform:
   m_ObjectHideFlags: 0

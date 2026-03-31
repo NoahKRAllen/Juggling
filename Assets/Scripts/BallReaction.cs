@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BallReaction : MonoBehaviour
 {
-    [SerializeField]private Transform targetBarPosition;
-    [SerializeField] private float jumpHeight;
+    [SerializeField] private Variables variables;
+    
     private Rigidbody2D _rb;
     private float _radius;
     private float _maxTargetY;
@@ -15,9 +14,9 @@ public class BallReaction : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         if (_rb == null)
             Debug.LogError($"Missing rigidbody on target ball {gameObject.name}");
-        _radius = gameObject.transform.localScale.y / 2; ;
-        _maxTargetY = targetBarPosition.position.y + (_radius + targetBarPosition.localScale.y / 2);
-        _minTargetY = targetBarPosition.position.y - (_radius + targetBarPosition.localScale.y / 2);
+        _radius = variables.ballScaler / 2;
+        _maxTargetY = variables.barPosition.position.y + (_radius + variables.barScale.localScale.y / 2);
+        _minTargetY = variables.barPosition.position.y - (_radius + variables.barScale.localScale.y / 2);
     }
 
     public void Clicked()
@@ -27,8 +26,19 @@ public class BallReaction : MonoBehaviour
             FailedClick();
             return;
         }
-        gameObject.transform.position = new Vector3(0, jumpHeight, 0);
+        gameObject.transform.position = new Vector3(0, variables.ballJumpHeight, 0);
         _rb.linearVelocity = Vector3.zero;
+    }
+
+    public bool UpdateTargetArea(float barYScale, float barYPosition)
+    {
+        if (Camera.main != null && barYPosition < Camera.main.ScreenToWorldPoint(Vector3.zero).y) return false;
+        if (barYScale <= 0) return false;
+        
+        _maxTargetY = barYPosition + (_radius + barYScale / 2);
+        _minTargetY = barYPosition - (_radius + barYScale / 2);
+        
+        return true;
     }
 
     public bool InRange()

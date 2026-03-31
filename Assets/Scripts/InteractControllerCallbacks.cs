@@ -4,17 +4,7 @@ using UnityEngine.InputSystem;
 
 public class InteractControllerCallbacks : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private Variables variables;
 
     public void OnInteract(InputAction.CallbackContext context)
     {
@@ -28,7 +18,7 @@ public class InteractControllerCallbacks : MonoBehaviour
         
 
         //Test hit exists, otherwise you get an error.
-        if (!hit || !Variables.Instance.targets.Contains(hit.collider.gameObject)) return;
+        if (!hit || !variables.targetPool.Contains(hit.collider.gameObject)) return;
         hit.collider.gameObject.GetComponent<BallReaction>().Clicked();
         Debug.Log($"Hit {hit.collider.gameObject.name} with click at {Mouse.current.position.ReadValue()}");
     }
