@@ -6,12 +6,11 @@ public class Variables : MonoBehaviour
 {   
     //Target List
     [Header("Ball Variables")]
-    public List<GameObject> targetPool;
+    public List<GameObject> ballObjectPool;
     public int ballScore;
     public float ballGravityScaler;
     public float ballScaler;
-    public float ballJumpHeight;
-    
+    public Color ballColor;
     
     //Bar Variables
     [Header("Bar Variables")]

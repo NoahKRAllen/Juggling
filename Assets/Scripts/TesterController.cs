@@ -1,10 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
+#if UNITY_EDITOR
 public class TesterController : MonoBehaviour
 {
-    private readonly float _delay = 5;
+    private readonly float _delay = 2;
     private float _currentDelay;
     [SerializeField]private Variables variables;
     
@@ -19,24 +18,32 @@ public class TesterController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        _currentDelay -= Time.deltaTime;
+        if (!variables.testing) return;
+        _currentDelay -= Time.deltaTime; 
         if (variables.testingPasses)
         {
-            foreach (GameObject t in variables.targetPool)
+            foreach (GameObject t in variables.ballObjectPool)
             {
-                if(t.activeInHierarchy)
-                    if (t.GetComponent<BallReaction>().InRange())
-                    {
-                        t.GetComponent<BallReaction>().Clicked();
-                    }
+                try
+                {
+                    if (t.activeInHierarchy)
+                        if (t.GetComponent<BallReaction>().InRange())
+                        {
+                            t.GetComponent<BallReaction>().Clicked();
+                        }
+                }
+                catch (System.Exception e)
+                {
+                    Debug.Log($"An exception has occured trying to click on {t.name} " + e.Message);
+                }
             }
         }
 
         if (variables.testingFails && _currentDelay <= 0)
         {
-            foreach (GameObject t in variables.targetPool)
+            foreach (GameObject t in variables.ballObjectPool)
             {
                 if (t.activeInHierarchy)
                     if (!t.GetComponent<BallReaction>().InRange())
@@ -48,3 +55,4 @@ public class TesterController : MonoBehaviour
         }
     }
 }
+#endif

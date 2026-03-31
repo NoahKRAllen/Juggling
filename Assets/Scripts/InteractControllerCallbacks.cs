@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,7 +17,7 @@ public class InteractControllerCallbacks : MonoBehaviour
         
 
         //Test hit exists, otherwise you get an error.
-        if (!hit || !variables.targetPool.Contains(hit.collider.gameObject)) return;
+        if (!hit || !variables.ballObjectPool.Contains(hit.collider.gameObject)) return;
         hit.collider.gameObject.GetComponent<BallReaction>().Clicked();
         Debug.Log($"Hit {hit.collider.gameObject.name} with click at {Mouse.current.position.ReadValue()}");
     }

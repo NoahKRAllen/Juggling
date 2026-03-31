@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BallReaction : MonoBehaviour
@@ -19,6 +20,12 @@ public class BallReaction : MonoBehaviour
         _minTargetY = variables.barPosition.position.y - (_radius + variables.barScale.localScale.y / 2);
     }
 
+    private void Update()
+    {
+        if(gameObject.transform.position.y < -5)
+            FailedClick();
+    }
+
     public void Clicked()
     {
         if (!InRange())
@@ -26,8 +33,7 @@ public class BallReaction : MonoBehaviour
             FailedClick();
             return;
         }
-        gameObject.transform.position = new Vector3(0, variables.ballJumpHeight, 0);
-        _rb.linearVelocity = Vector3.zero;
+        GameManager.Instance.AddScore(gameObject, _rb);
     }
 
     public bool UpdateTargetArea(float barYScale, float barYPosition)
@@ -48,6 +54,6 @@ public class BallReaction : MonoBehaviour
 
     private void FailedClick()
     {
-        print($"Clicked too soon on {gameObject.name}");
+        GameManager.Instance.ResetBall(gameObject, _rb);
     }
 }
