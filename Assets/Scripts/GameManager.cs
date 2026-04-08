@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,8 +6,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     //Game Variables
     [SerializeField] private int score;
+    private int _scoreToUpgrade;
     [SerializeField] private float time;
     [SerializeField] private Variables variables;
+    [SerializeField] private UiManager uiManager;
     
     //Used for randomized placement of balls before dropping them
     [SerializeField] private float maxSpawnX;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        _scoreToUpgrade = 10;
         score = 0;
         time = 0;
         _currentDelay = ballSpawnDelay;
@@ -59,6 +61,11 @@ public class GameManager : MonoBehaviour
                 }
             }    
         }
+        if(score >= _scoreToUpgrade)
+        {
+            uiManager.StartUpgradeButtonFlashing();
+        }
+        uiManager.UpdateText(score.ToString(), time.ToString("F2"));
 
         
     }

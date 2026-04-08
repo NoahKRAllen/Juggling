@@ -2786,6 +2786,7 @@ GameObject:
   - component: {fileID: 566684760}
   - component: {fileID: 566684759}
   - component: {fileID: 566684758}
+  - component: {fileID: 566684762}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2868,8 +2869,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1307847986}
   - {fileID: 1531364937}
+  - {fileID: 1307847986}
   - {fileID: 438155970}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2878,6 +2879,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &566684762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566684757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef13ef26350a6a40b628784c2fdf326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UiManager
+  timerText: {fileID: 1531364938}
+  scoreText: {fileID: 1307847987}
+  gameManager: {fileID: 130895412}
 --- !u!1 &617405782
 GameObject:
   m_ObjectHideFlags: 0
@@ -9431,11 +9447,11 @@ MonoBehaviour:
   ballColor: {r: 0, g: 1, b: 0.06871343, a: 0}
   barPosition: {fileID: 928985804}
   barScale: {fileID: 689684016}
-  scoreText: {fileID: 0}
-  timeText: {fileID: 0}
-  testing: 0
+  scoreText: {fileID: 1307847987}
+  timeText: {fileID: 1531364938}
+  testing: 1
   testingFails: 0
-  testingPasses: 0
+  testingPasses: 1
 --- !u!4 &2008970214
 Transform:
   m_ObjectHideFlags: 0

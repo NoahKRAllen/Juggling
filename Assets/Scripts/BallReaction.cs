@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class BallReaction : MonoBehaviour
@@ -33,6 +32,8 @@ public class BallReaction : MonoBehaviour
             FailedClick();
             return;
         }
+        //Passes both itself and its rigidbody to allow the GameManager instance to reset the position
+        //without doing another GetComponent() call
         GameManager.Instance.AddScore(gameObject, _rb);
     }
 
@@ -54,6 +55,8 @@ public class BallReaction : MonoBehaviour
 
     private void FailedClick()
     {
+        //Passes both itself and its rigidbody to allow the GameManager instance to reset the position
+        //without doing another GetComponent() call
         GameManager.Instance.ResetBall(gameObject, _rb);
     }
 }
