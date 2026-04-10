@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     //Game Variables
     [SerializeField] private int score;
-    private int _scoreToUpgrade;
+    [SerializeField] int scoreToUpgrade;
     [SerializeField] private float time;
     [SerializeField] private Variables variables;
     [SerializeField] private UiManager uiManager;
@@ -32,9 +32,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _scoreToUpgrade = 10;
-        score = 0;
-        time = 0;
         _currentDelay = ballSpawnDelay;
         foreach (var ball in variables.ballObjectPool)
         {
@@ -61,12 +58,16 @@ public class GameManager : MonoBehaviour
                 }
             }    
         }
-        if(score >= _scoreToUpgrade)
+        if(score >= scoreToUpgrade)
         {
             uiManager.StartUpgradeButtonFlashing();
         }
-        uiManager.UpdateText(score.ToString(), time.ToString("F2"));
-
+        if (score > 10000000)
+        {
+            
+        }
+        uiManager.UpdateText(score.ToString(), time.ToString("G"));
+        
         
     }
 

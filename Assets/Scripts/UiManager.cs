@@ -25,4 +25,9 @@ public class UiManager : MonoBehaviour
         newColor.normalColor = new Color(newColor.normalColor.r,newColor.normalColor.g,newColor.normalColor.b, alpha);
         button.colors = newColor;
     }
+
+    private void OpenUpgradeMenu()
+    {
+        
+    }
 }
