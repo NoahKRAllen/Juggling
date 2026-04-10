@@ -26,7 +26,7 @@ public class UiManager : MonoBehaviour
         button.colors = newColor;
     }
 
-    private void OpenUpgradeMenu()
+    public void OpenMenu(GameObject menuToOpen)
     {
         
     }
